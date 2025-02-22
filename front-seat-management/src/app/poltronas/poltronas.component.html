@@ -1,0 +1,26 @@
+<div class="poltronas-grid">
+  <div *ngFor="let poltrona of poltronas" class="poltrona" [class.ocupada]="poltrona.status === 'ocupada'" (click)="abrirModal(poltrona)">
+    <div class="poltrona-conteudo">
+      <div class="poltrona-numero">
+        {{ poltrona.id }}
+      </div>
+      <div class="poltrona-icone">
+        <i class="fas fa-chair"></i>
+      </div>
+      <p *ngIf="poltrona.status === 'ocupada' && poltrona.pessoa" class="nome-pessoa">{{ poltrona.pessoa }}</p>
+      <div class="botoes">
+        <button *ngIf="poltrona.status === 'ocupada'" (click)="removerPessoa(poltrona.id); $event.stopPropagation()">Remover</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="modalAberto" class="modal">
+  <div class="modal-conteudo">
+    <h2>Alocar Pessoa</h2>
+    <input type="text" [(ngModel)]="nomePessoa" placeholder="Nome da Pessoa">
+    <button class="botao-habilitado"   [disabled]="!nomePessoa" (click)="alocarPessoa()">Confirmar</button>
+    <button (click)="fecharModal()">Cancelar</button>
+  </div>
+</div>
+

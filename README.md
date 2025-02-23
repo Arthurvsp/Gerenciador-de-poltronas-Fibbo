@@ -20,7 +20,7 @@ Este projeto é uma aplicação web para gerenciar assentos, permitindo a aloca�
 
 1. instale as dependências: npm install
 2. rode o front: ng serve
-3. Acesse a aplicação via: http://localhost:4200 no seu navegado.
+3. Acesse a aplicação via: http://localhost:4200 no seu navegador.
 
 # Funcionalidades
 

@@ -6,13 +6,13 @@ import jakarta.persistence.*;
 public class Poltrona {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)  // Usando geração automática do ID
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String numero;
-    private boolean disponivel;  // indica se a poltrona está disponível ou ocupada
-    private String pessoa;  // quem alocou a poltrona
+    private boolean disponivel;
+    private String pessoa;
 
-    @Column(name = "conteudo") // Supondo que o nome da coluna seja "conteudo"
+    @Column(name = "conteudo")
     private String conteudo;
 
     public String getConteudo() {

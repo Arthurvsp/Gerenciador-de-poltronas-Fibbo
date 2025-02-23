@@ -24,7 +24,7 @@ public class PoltronaService {
         this.historicoUsoPoltronaRepository = historicoUsoPoltronaRepository;
     }
 
-    // Método para obter as poltronas disponíveis
+
     public List<Poltrona> obterPoltronasDisponiveis() {
         return poltronaRepository.findByDisponivelTrue();
     }
@@ -33,32 +33,29 @@ public class PoltronaService {
         Optional<Poltrona> poltronaOptional = poltronaRepository.findById(id);
         if (poltronaOptional.isPresent()) {
             Poltrona poltrona = poltronaOptional.get();
-            // Retorne o conteúdo da célula da poltrona (substitua "getConteudo()" pelo método correto)
-            return poltrona.getConteudo(); // Supondo que você tenha um método getConteudo() na sua entidade Poltrona
+            return poltrona.getConteudo();
         } else {
             return null;
         }
     }
 
-    // Método para obter todas as poltronas
+
     public List<Poltrona> obterTodasPoltronas() {
         return poltronaRepository.findAll();
     }
 
-    // Método para alocar uma poltrona
+
     public boolean alocarPoltrona(Long id, String pessoa) {
-        // Verificar se a poltrona existe
         Poltrona poltrona = poltronaRepository.findById(id).orElse(null);
         if (poltrona == null || !poltrona.isDisponivel()) {
-            return false; // Poltrona não existe ou não está disponível
+            return false;
         }
 
-        // Alocar a poltrona (marcando-a como ocupada)
-        poltrona.setDisponivel(false);  // Marca como ocupada
-        poltrona.setPessoa(pessoa);  // Atribui o nome da pessoa
-        poltronaRepository.save(poltrona);  // Salva no banco
+        poltrona.setDisponivel(false);
+        poltrona.setPessoa(pessoa);
+        poltronaRepository.save(poltrona);
 
-        // Registrar no histórico de movimentação
+
         HistoricoUsoPoltrona historico = new HistoricoUsoPoltrona();
         historico.setPoltronaId(poltrona.getId());
         historico.setPessoa(pessoa);
@@ -71,18 +68,15 @@ public class PoltronaService {
 
     // Método para liberar uma poltrona
     public boolean liberarPoltrona(Long id, String pessoa) {
-        // Verificar se a poltrona existe
         Poltrona poltrona = poltronaRepository.findById(id).orElse(null);
         if (poltrona == null || poltrona.isDisponivel()) {
-            return false; // Poltrona não existe ou já está disponível
+            return false;
         }
 
-        // Liberar a poltrona (marcando-a como disponível)
-        poltrona.setDisponivel(true);  // Marca como disponível
-        poltrona.setPessoa(null);  // Remove o nome da pessoa
-        poltronaRepository.save(poltrona);  // Salva no banco
+        poltrona.setDisponivel(true);
+        poltrona.setPessoa(null);
+        poltronaRepository.save(poltrona);
 
-        // Registrar no histórico de movimentação
         HistoricoUsoPoltrona historico = new HistoricoUsoPoltrona();
         historico.setPoltronaId(poltrona.getId());
         historico.setPessoa(pessoa);
@@ -93,13 +87,12 @@ public class PoltronaService {
         return true;
     }
 
-    // Método para inicializar as poltronas, criando-as caso não existam
+
     @PostConstruct
     public void inicializarPoltronas() {
-        // Verificar se já existem poltronas no banco
+
         List<Poltrona> poltronas = poltronaRepository.findAll();
 
-        // Se não houver 15 poltronas, cria as faltantes
         if (poltronas.size() < 15) {
             for (int i = poltronas.size(); i < 15; i++) {
                 Poltrona novaPoltrona = new Poltrona();

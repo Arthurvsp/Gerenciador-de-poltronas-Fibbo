@@ -15,10 +15,9 @@ public class HistoricoUsoPoltrona {
 
     private Long poltronaId;
     private String pessoa;
-    private String tipoMovimentacao; // Tipo da movimentação: "Ocupada" ou "Liberada"
-    private LocalDateTime dataAlocacao; // Data da movimentação
+    private String tipoMovimentacao;
+    private LocalDateTime dataAlocacao;
 
-    // Getters and setters
 
     public Long getId() {
         return id;

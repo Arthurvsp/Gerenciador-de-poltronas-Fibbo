@@ -21,7 +21,6 @@ public class PoltronaController {
         this.poltronaService = poltronaService;
     }
 
-    // Endpoint para obter as poltronas disponíveis
     @GetMapping("/disponiveis")
     public ResponseEntity<List<Poltrona>> obterPoltronasDisponiveis() {
         List<Poltrona> poltronas = poltronaService.obterPoltronasDisponiveis();
@@ -34,7 +33,6 @@ public class PoltronaController {
         return ResponseEntity.ok(poltronas);
     }
 
-    // Endpoint para alocar uma poltrona
     @PutMapping("/{id}/alocar")
     public ResponseEntity<Object> alocarPoltrona(@PathVariable Long id, @RequestBody PessoaRequest pessoaRequest) {
         System.out.println("Nome da pessoa recebido: " + pessoaRequest.getPessoa());
@@ -57,8 +55,6 @@ public class PoltronaController {
         }
     }
 
-
-    // Endpoint para liberar uma poltrona
     @PutMapping("/{id}/liberar")
     public ResponseEntity<Object> liberarPoltrona(@PathVariable Long id, @RequestBody PessoaRequest pessoaRequest) {
         System.out.println("Liberando poltrona " + id + " para " + pessoaRequest.getPessoa());
@@ -83,7 +79,6 @@ public class PoltronaController {
         }
     }
 
-    // Classe para receber o nome da pessoa no corpo da requisição
     static class PessoaRequest {
         private String pessoa;
 

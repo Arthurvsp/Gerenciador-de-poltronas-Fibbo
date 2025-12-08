@@ -4,7 +4,9 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
-RUN npm run build -- --base-href=/
+
+# Força o build dentro do container e garante saída no caminho esperado
+RUN npm run build -- --output-path=/app/dist/my-app --base-href=/
 
 # Stage 2: Nginx
 FROM nginx:alpine

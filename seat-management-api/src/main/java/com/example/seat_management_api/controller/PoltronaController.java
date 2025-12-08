@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/poltronas")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin
 public class PoltronaController {
 
     private final PoltronaService poltronaService;

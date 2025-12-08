@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  backend:
+    build: ./seat-management-api
+    container_name: seat_management_api
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://172.31.30.252:3306/fibbo_poltronas
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+    ports:
+      - "8080:8080"
+
+  frontend:
+    build: ./front-seat-management
+    container_name: front_seat_management
+    depends_on:
+      - backend
+    ports:
+      - "80:80"

@@ -1,4 +1,4 @@
-# Build da aplicação
+# Stage 1: Build da aplicação Angular
 FROM node:20-alpine AS build
 
 WORKDIR /app
@@ -9,8 +9,8 @@ RUN npm install
 COPY . .
 RUN npm run build
 
-# Serve via Nginx
+# Stage 2: Servir via Nginx
 FROM nginx:alpine
-COPY --from=build /app/dist /usr/share/nginx/html
+COPY --from=build /app/dist/my-app /usr/share/nginx/html
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]

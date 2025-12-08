@@ -10,7 +10,7 @@ RUN mvn dependency:go-offline -B
 
 # Copia o código-fonte e builda o JAR
 COPY src ./src
-RUN mvn package -DskipTests -B
+RUN mvn package -Dmaven.test.skip=true -B
 
 # Stage 2: Runtime (imagem leve só com Java)
 FROM eclipse-temurin:17-jre-alpine

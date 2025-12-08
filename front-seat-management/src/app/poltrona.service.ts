@@ -7,7 +7,7 @@ import { Poltrona } from './poltronas/poltrona.model';
   providedIn: 'root'
 })
 export class PoltronaService {
-  private apiUrl = 'http://localhost:8080/api/poltronas';
+  private apiUrl = '/api/poltronas';
 
   constructor(private http: HttpClient) { }
 

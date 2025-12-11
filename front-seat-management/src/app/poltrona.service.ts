@@ -26,9 +26,9 @@ export class PoltronaService {
     return this.http.post(`${this.apiUrl}/${id}/alocar`, { pessoa: nomePessoa });
   }
 
-  removerPessoa(id: number, nomePessoa: string): Observable<any> {
-    console.log(`Fazendo requisição POST para: ${this.apiUrl}/${id}/liberar com nome: ${nomePessoa}`);
-    return this.http.post(`${this.apiUrl}/${id}/liberar`, { pessoa: nomePessoa });
+  removerPessoa(id: number): Observable<any> {
+    console.log(`Fazendo requisição POST para: ${this.apiUrl}/${id}/liberar`);
+    return this.http.post(`${this.apiUrl}/${id}/liberar`, {});
   }
 
 }

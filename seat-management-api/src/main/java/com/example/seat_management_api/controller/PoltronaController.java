@@ -33,7 +33,7 @@ public class PoltronaController {
         return ResponseEntity.ok(poltronas);
     }
 
-    @PutMapping("/{id}/alocar")
+    @PostMapping("/{id}/alocar")
     public ResponseEntity<Object> alocarPoltrona(@PathVariable Long id, @RequestBody PessoaRequest pessoaRequest) {
         System.out.println("Nome da pessoa recebido: " + pessoaRequest.getPessoa());
         boolean alocada = poltronaService.alocarPoltrona(id, pessoaRequest.getPessoa());
@@ -55,7 +55,7 @@ public class PoltronaController {
         }
     }
 
-    @PutMapping("/{id}/liberar")
+    @PostMapping("/{id}/liberar")
     public ResponseEntity<Object> liberarPoltrona(@PathVariable Long id, @RequestBody PessoaRequest pessoaRequest) {
         System.out.println("Liberando poltrona " + id + " para " + pessoaRequest.getPessoa());
         boolean liberada = poltronaService.liberarPoltrona(id, pessoaRequest.getPessoa());

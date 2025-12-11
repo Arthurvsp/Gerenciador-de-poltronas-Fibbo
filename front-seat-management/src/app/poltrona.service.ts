@@ -22,13 +22,13 @@ export class PoltronaService {
   }
 
   alocarPessoa(id: number, nomePessoa: string): Observable<any> {
-    console.log(`Fazendo requisição PUT para: ${this.apiUrl}/${id}/alocar com nome: ${nomePessoa}`);
-    return this.http.put(`${this.apiUrl}/${id}/alocar`, { pessoa: nomePessoa });
+    console.log(`Fazendo requisição POST para: ${this.apiUrl}/${id}/alocar com nome: ${nomePessoa}`);
+    return this.http.post(`${this.apiUrl}/${id}/alocar`, { pessoa: nomePessoa });
   }
 
-  removerPessoa(id: number): Observable<any> {
-    console.log(`Fazendo requisição PUT para: ${this.apiUrl}/${id}/liberar`);
-    return this.http.put(`${this.apiUrl}/${id}/liberar`, {});
+  removerPessoa(id: number, nomePessoa: string): Observable<any> {
+    console.log(`Fazendo requisição POST para: ${this.apiUrl}/${id}/liberar com nome: ${nomePessoa}`);
+    return this.http.post(`${this.apiUrl}/${id}/liberar`, { pessoa: nomePessoa });
   }
 
 }

@@ -17,8 +17,8 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             cd /home/admin/Gerenciador-de-poltronas-Fibbo
-            git pull origin main
-            echo "Reconstruindo imagens..."
+            sudo git pull origin main
+            sudo echo "Reconstruindo imagens..."
             sudo docker compose build --no-cache || sudo docker-compose build --no-cache
             sudo docker compose up -d --force-recreate || sudo docker-compose up -d --force-recreate
-            echo "Deploy concluído com sucesso!"
+            sudo echo "Deploy concluído com sucesso!"
